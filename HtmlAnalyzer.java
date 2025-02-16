@@ -65,7 +65,7 @@ public class HtmlAnalyzer {
 
             reader.close();
         } catch (Exception e) {
-            System.out.println("URL connection error"); // em caso de problema de conexão imprime essa mensagem
+            System.out.println("URL connection error"); // Em caso de problema de conexão imprime essa mensagem
         }
     }
 }
