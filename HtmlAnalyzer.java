@@ -16,10 +16,10 @@ public class HtmlAnalyzer {
             URL htmlUrl = new URL(url);
             BufferedReader reader = new BufferedReader(new InputStreamReader(htmlUrl.openStream()));
 
-            int depth = 0; // Nível de profundidade atual
-            String deepestText = ""; // Texto no nível mais profundo
+            int depth = 0; // Define o nível de profundidade atual
+            String deepestText = ""; // Texto do nível mais profundo
             int maxDepth = -1; // Profundidade máxima encontrada
-            Stack<String> tagStack = new Stack<>(); // Pilha para verificar tags balanceadas
+            Stack<String> tagStack = new Stack<>(); 
 
             String line;
             while ((line = reader.readLine()) != null) {
@@ -47,7 +47,6 @@ public class HtmlAnalyzer {
                         tagStack.push(line.substring(1, line.length() - 1)); // Adiciona a tag à pilha
                     }
                 } else {
-                    // É um texto
                     if (depth > maxDepth) {
                         maxDepth = depth;
                         deepestText = line;
@@ -55,7 +54,7 @@ public class HtmlAnalyzer {
                 }
             }
 
-            // Verifica se todas as tags foram fechadas
+            // Verifica se todas as tags foram fechadas da forma correta
             if (!tagStack.isEmpty()) {
                 System.out.println("malformed HTML");
                 return;
@@ -66,7 +65,7 @@ public class HtmlAnalyzer {
 
             reader.close();
         } catch (Exception e) {
-            System.out.println("URL connection error");
+            System.out.println("URL connection error"); // em caso de problema de conexão imprime essa mensagem
         }
     }
 }
